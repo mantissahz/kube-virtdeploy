@@ -1,30 +1,50 @@
 cluster:
   bootstrap:
+    k8s-version: 1.26.5-00
     name: k3s
-    version: v1.23.6+k3s1
+    #name: rke2
+    #version: v1.24.14+k3s1
+    #version: v1.24.2+rke2r1
+    #version: v1.26.3+k3s1 # rancher 2.7
+    #version: v1.28.13+k3s1 # rancher 2.8
+    #version: v1.30.5+k3s1 # rancher 2.9
+    version: v1.32.4+k3s1
   k9s:
     version: v0.24.15
   stern:
     version: 1.11.0
   kubelet:
-    log-level: 2
-  prefix: rancher50
+    log-level: 1
+  prefix: rancher60
   vm:
-    box: generic/ubuntu2004
-    version: "3.6.14"
-    cpus: 2
+    #box: generic/ubuntu2004
+    box: generic/ubuntu2204
+    #box: generic/rocky8
+    #box: generic/fedora39
+    #box: generic/debian12
+    #box: generic/centos7
+    #box: generic/centos8
+    #box: generic/opensuse15
+    #box: opensuse/Leap-15.3.x86_64
+    #version: "3.6.14"
+    #version: 4.0.0
+    version: 4.3.12
+    cpus: 4
     memory: 8192
-    disk-size: 50
+    #memory: 16384
+    disk-size: 20
     additional-disk-size: 0
     additional-disk-filesystem: ext4
   token: helloworld
   server:
     name: master
-    ip: 10.20.90.50
+    ip: 10.10.90.50
   workers:
     - name: worker1
-      ip: 10.20.90.51
+      ip: 10.10.90.51
     - name: worker2
-      ip: 10.20.90.52
+      ip: 10.10.90.52
     - name: worker3
-      ip: 10.20.90.53
+      ip: 10.10.90.53
+    #- name: worker4
+    #  ip: 10.10.90.54

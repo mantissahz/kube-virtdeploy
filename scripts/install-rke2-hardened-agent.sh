@@ -33,7 +33,7 @@ node-external-ip: ${IP}
 node-ip: ${IP}
 kubelet-arg: "v=${KUBELET_LOG_LEVEL}"
 resolv-conf: "/etc/resolv.conf"
-profile: "cis-1.5"
+profile: "cis-1.6"
 EOF
 
 curl -sfL https://get.rke2.io | sh -

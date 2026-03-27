@@ -84,6 +84,15 @@ function do_start_one () {
 	popd
 }
 
+function do_stop_one () {
+	NODE="$1"
+        echo "Stop One Node \'$NODE\' with $CONFFILE"
+
+        pushd ./vagrant
+        env KUBE_VIRTDEPLOY_CONFIG="$CONFFILE" VAGRANT_VAGRANTFILE=Vagrantfile.worker vagrant destroy "$NODE"
+        popd
+}
+
 function do_halt_one () {
 	NODE="$1"
 
@@ -145,6 +154,7 @@ command="" && [ ${#params[@]} -ne 0 ] && command="${params[0]}"
 case $command in
 	'start' )
 		if [ ${#params[@]} -eq 1 ]; then
+			echo 'do_start'
 			do_start
 		elif [ ${#params[@]} -eq 2 ]; then
 			do_start_one "${params[1]}"
@@ -155,6 +165,8 @@ case $command in
 	'stop' )
 		if [ ${#params[@]} -eq 1 ]; then
 			do_stop
+		elif [ ${#params[@]} -eq 2 ]; then
+			do_stop_one "${params[1]}"
 		else
 			exit 1
 		fi

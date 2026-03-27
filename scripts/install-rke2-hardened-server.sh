@@ -31,7 +31,7 @@ node-external-ip: ${IP}
 node-ip: ${IP}
 kubelet-arg: "v=${KUBELET_LOG_LEVEL}"
 resolv-conf: "/etc/resolv.conf"
-profile: "cis-1.5"
+profile: "cis-1.6"
 EOF
 
 export INSTALL_RKE2_VERSION=${RKE2_VERSION}
